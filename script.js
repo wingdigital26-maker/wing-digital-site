@@ -7,6 +7,19 @@ const solidAt = () => (hero ? window.innerHeight * 0.85 : 120);
 addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > solidAt()));
 addEventListener('load', () => nav.classList.toggle('solid', scrollY > solidAt()));
 
+/* mobile menu */
+const burger = document.querySelector('.burger');
+if (burger) burger.addEventListener('click', () => {
+  const open = nav.classList.toggle('menu-open');
+  burger.setAttribute('aria-expanded', open);
+});
+
+/* contact form: show thanks after formsubmit redirect */
+if (location.search.includes('sent=1')) {
+  const l = document.getElementById('subL');
+  if (l) l.textContent = "Thanks — we'll be in touch!";
+}
+
 /* intro overlay (home only) — chip dissolves into the wordmark */
 const intro = document.getElementById('intro');
 if (intro) {

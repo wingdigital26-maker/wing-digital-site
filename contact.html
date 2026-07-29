@@ -20,6 +20,7 @@
       <a href="blog.html"><span class="roll"><span>Blog</span><span>Blog</span></span></a>
       <a href="about.html"><span class="roll"><span>About</span><span>About</span></span></a>
     </div>
+    <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <a href="contact.html" class="pill nav-cta"><span class="roll"><span>Contact us</span><span>Contact us</span></span></a>
   </div>
 </nav>
@@ -37,12 +38,15 @@
         <div><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.5-7-11a7 7 0 1114 0c0 5.5-7 11-7 11z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.3" stroke="currentColor" stroke-width="2"/></svg>Located in Plano, TX — serving all of DFW</div>
       </div>
     </div>
-    <form onsubmit="return submitForm(event)">
-      <input type="text" placeholder="Name*" required aria-label="Name">
-      <input type="email" placeholder="Email*" required aria-label="Email">
-      <input type="text" placeholder="Phone number" aria-label="Phone number">
-      <input type="text" placeholder="Business name" aria-label="Business name">
-      <textarea placeholder="Tell us about your business*" required aria-label="Message"></textarea>
+    <form action="https://formsubmit.co/wjackwing1@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New Wing Digital consultation request">
+      <input type="hidden" name="_next" value="https://wingdigital26-maker.github.io/wing-digital-site/contact.html?sent=1">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="name" placeholder="Name*" required aria-label="Name">
+      <input type="email" name="email" placeholder="Email*" required aria-label="Email">
+      <input type="text" name="phone" placeholder="Phone number" aria-label="Phone number">
+      <input type="text" name="business" placeholder="Business name" aria-label="Business name">
+      <textarea name="message" placeholder="Tell us about your business*" required aria-label="Message"></textarea>
       <button type="submit" class="pill"><span class="roll"><span id="subL">Submit now</span><span>Submit now</span></span></button>
     </form>
   </div>

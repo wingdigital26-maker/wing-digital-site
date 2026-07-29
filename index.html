@@ -10,6 +10,7 @@
 </head>
 <body>
 
+<noscript><style>.intro{display:none}.wordmark{opacity:1!important}</style></noscript>
 <div class="intro" id="intro" aria-hidden="true">
   <div class="pane tl"></div>
   <div class="pane br"></div>
@@ -26,6 +27,7 @@
       <a href="blog.html"><span class="roll"><span>Blog</span><span>Blog</span></span></a>
       <a href="about.html"><span class="roll"><span>About</span><span>About</span></span></a>
     </div>
+    <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <a href="contact.html" class="pill nav-cta"><span class="roll"><span>Contact us</span><span>Contact us</span></span></a>
   </div>
 </nav>
@@ -162,7 +164,7 @@
   <div class="wrap faq">
     <div class="rv"><span class="eyebrow">FAQ</span><h2 style="margin-top:16px">Answers before you ask.</h2></div>
     <div class="rv">
-      <div class="qa"><button>What's included in the website price?<span class="ic"></span></button><div class="ans"><p>Everything: design, copy, domain, hosting, contact form, and on-page SEO. One flat monthly rate with updates and support included. You get your exact quote on the free call.</p></div></div>
+      <div class="qa"><button>What's included in the website plan?<span class="ic"></span></button><div class="ans"><p>Everything: design, copy, domain, hosting, contact form, and on-page SEO. One flat monthly rate with updates and support included. You get your exact quote on the free call.</p></div></div>
       <div class="qa"><button>Do I have to sign a long-term contract?<span class="ic"></span></button><div class="ans"><p>No. Everything is month-to-month — you stay because it's working, not because you're locked in.</p></div></div>
       <div class="qa"><button>How does your SEO service work?<span class="ic"></span></button><div class="ans"><p>Each month we optimize your local Google presence, publish keyword-targeted blog content, and track rankings so you climb higher for the searches your customers actually use.</p></div></div>
       <div class="qa"><button>Do you only work with businesses in DFW?<span class="ic"></span></button><div class="ans"><p>Yes — we focus exclusively on Dallas–Fort Worth. Staying local means we know the market and can rank you for the neighborhoods that matter.</p></div></div>
@@ -187,11 +189,14 @@
         <div><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.5-7-11a7 7 0 1114 0c0 5.5-7 11-7 11z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.3" stroke="currentColor" stroke-width="2"/></svg>Located in Plano, TX — serving all of DFW</div>
       </div>
     </div>
-    <form onsubmit="return submitForm(event)">
-      <input type="text" placeholder="Name*" required aria-label="Name">
-      <input type="email" placeholder="Email*" required aria-label="Email">
-      <input type="text" placeholder="Phone number" aria-label="Phone number">
-      <textarea placeholder="Tell us about your business*" required aria-label="Message"></textarea>
+    <form action="https://formsubmit.co/wjackwing1@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New Wing Digital consultation request (home)">
+      <input type="hidden" name="_next" value="https://wingdigital26-maker.github.io/wing-digital-site/contact.html?sent=1">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="name" placeholder="Name*" required aria-label="Name">
+      <input type="email" name="email" placeholder="Email*" required aria-label="Email">
+      <input type="text" name="phone" placeholder="Phone number" aria-label="Phone number">
+      <textarea name="message" placeholder="Tell us about your business*" required aria-label="Message"></textarea>
       <button type="submit" class="pill"><span class="roll"><span id="subL">Submit now</span><span>Submit now</span></span></button>
     </form>
   </div>

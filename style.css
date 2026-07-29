@@ -82,7 +82,24 @@ nav.solid .logo{color:var(--ink)}
 nav.solid .navlinks a{color:var(--head)}
 .navlinks a,nav .nav-cta{transition:color .4s}
 .nav-cta{height:44px;padding:0 22px;font-size:14px}
-@media(max-width:860px){.navlinks{display:none}}
+/* mobile menu */
+.burger{display:none;background:none;border:0;cursor:pointer;padding:10px;margin-left:6px}
+.burger span{display:block;width:22px;height:2px;background:#fff;margin:5px 0;border-radius:2px;transition:all .3s var(--ease)}
+nav.solid .burger span{background:var(--ink)}
+nav.menu-open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+nav.menu-open .burger span:nth-child(2){opacity:0}
+nav.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:860px){
+  .navlinks{display:none;position:absolute;top:80px;left:0;right:0;flex-direction:column;gap:0;
+    background:rgba(12,13,17,.97);backdrop-filter:blur(20px);padding:10px 0 18px;
+    border-bottom:1px solid rgba(255,255,255,.1)}
+  nav.menu-open .navlinks{display:flex}
+  .navlinks a{padding:14px 28px;font-size:17px;color:#fff!important}
+  .burger{display:block}
+  nav.menu-open{background:rgba(12,13,17,.97)}
+  nav.menu-open .logo{color:#fff}
+  nav.menu-open .burger span{background:#fff}
+}
 
 /* ===== page head (subpages) ===== */
 .page-head{background:radial-gradient(120% 90% at 50% -20%, #1A2138 0%, var(--ink-2) 42%, var(--ink) 100%);
