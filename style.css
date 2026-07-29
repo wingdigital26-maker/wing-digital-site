@@ -161,8 +161,12 @@ section>.wrap{position:relative;z-index:1}
 .lead-xl{font-size:clamp(28px,4.4vw,50px);line-height:1.06;color:var(--head);max-width:24ch;letter-spacing:-.03em}
 
 /* service info cards */
-.svc-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media(max-width:860px){.svc-cards{grid-template-columns:1fr}}
+.svc-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.svc-cards .svc{padding:28px}
+.svc-cards .svc h3{font-size:19px}
+.svc-cards .svc .thumb{margin:-28px -28px 20px}
+@media(max-width:1100px){.svc-cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.svc-cards{grid-template-columns:1fr}}
 .svc{background:rgba(255,255,255,.5);backdrop-filter:blur(16px) saturate(1.35);
   border:1px solid rgba(255,255,255,.75);border-radius:16px;padding:34px;
   box-shadow:0 14px 40px -30px rgba(22,23,27,.2);
