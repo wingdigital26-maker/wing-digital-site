@@ -337,6 +337,10 @@ article.post h1{font-family:var(--display);font-size:clamp(32px,4.6vw,46px);line
 article.post h2{font-size:24px;margin:38px 0 12px;color:var(--head);letter-spacing:-.02em}
 article.post p,article.post li{font-size:16.5px;color:#4a4b4e;line-height:1.7;margin-bottom:14px}
 article.post ul{margin:0 0 14px 22px}
+/* contextual links inside article/service prose must READ as links */
+article.post p a,article.post li a{color:var(--accent-ink);text-decoration:underline;
+  text-decoration-thickness:1.5px;text-underline-offset:2px;font-weight:500;transition:color .2s}
+article.post p a:hover,article.post li a:hover{color:var(--accent)}
 article.post .postmeta{display:block}
 
 /* testimonials */
