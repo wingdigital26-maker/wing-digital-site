@@ -78,7 +78,9 @@ const ARW = ' <svg viewBox="0 0 24 24" fill="none" style="width:15px;height:15px
 const svc = {
   web: '<b>SERVICE 01 — Website Design.</b> A site that turns visitors into customers, live in two weeks. <a href="website-design.html">See the service' + ARW + '</a>',
   seo: '<b>SERVICE 02 — Local SEO.</b> Show up when customers search for what you do. <a href="local-seo.html">See the service' + ARW + '</a>',
-  social: '<b>SERVICE 03 — Social Media.</b> A professional presence, handled for you. <a href="social-media.html">See the service' + ARW + '</a>'
+  social: '<b>SERVICE 03 — Social Media.</b> A professional presence, handled for you. <a href="social-media.html">See the service' + ARW + '</a>',
+  email: '<b>SERVICE 04 — Email Automation.</b> Every lead answered in minutes, every follow-up sent on time. <a href="email-automation.html">See the service' + ARW + '</a>',
+  leads: '<b>SERVICE 05 — Lead Generation.</b> A pipeline you build, instead of waiting on referrals. <a href="lead-generation.html">See the service' + ARW + '</a>'
 };
 const segBody = document.getElementById('segBody');
 if (segBody) document.querySelectorAll('.seg button').forEach(b => b.onclick = () => {
