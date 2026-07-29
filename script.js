@@ -108,18 +108,18 @@ const io = new IntersectionObserver(es => es.forEach(e => {
   io.unobserve(e.target);
 }), { threshold: .16 });
 
+/* ONE reveal moment: only the first couple of elements you meet on the way down
+   animate. Everything past that is static. Hover motion is untouched. */
 const rvAll = [...document.querySelectorAll('.rv')];
-const blockOf = el => el.closest('section, .band, header, footer');
-const firstBlock = rvAll.length ? blockOf(rvAll[0]) : null;
-rvAll.forEach(el => {
-  if (firstBlock && blockOf(el) === firstBlock) io.observe(el);   // animates once
-  else el.classList.add('in');                                     // static
+const ANIMATE_FIRST = 2;
+rvAll.forEach((el, i) => {
+  if (i < ANIMATE_FIRST) io.observe(el);   // animates once, on first scroll
+  else el.classList.add('in');             // static from here down
 });
-/* number animations still run once when reached */
+/* counters/bars fill once when reached, then stay put */
 document.querySelectorAll('[data-stats]').forEach(el => io.observe(el));
 const barsEl = document.getElementById('bars');
-if (barsEl && !barsEl.classList.contains('rv')) io.observe(barsEl);
-else if (barsEl && blockOf(barsEl) !== firstBlock) io.observe(barsEl);
+if (barsEl) io.observe(barsEl);
 
 function runBars() {
   document.querySelectorAll('.fill').forEach(f => f.style.width = f.dataset.w + '%');
