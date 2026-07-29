@@ -141,10 +141,13 @@ nav.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg
   border:1px solid rgba(255,255,255,.13);border-radius:20px;padding:26px;
   box-shadow:0 24px 60px -30px rgba(0,0,0,.5)}
 .selector .q{font-size:14px;color:var(--on-ink-faint);margin-bottom:14px}
-.seg{display:flex;flex-wrap:wrap;gap:8px}
+/* all four services always sit on one row */
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .seg button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10);color:var(--on-ink);
-  font-family:inherit;font-size:13.5px;font-weight:450;padding:11px 18px;border-radius:100px;cursor:pointer;
+  font-family:inherit;font-size:12px;font-weight:450;padding:11px 4px;border-radius:100px;cursor:pointer;
+  text-align:center;white-space:nowrap;
   transition:background .3s,color .3s,border-color .3s}
+@media(max-width:520px){.seg{grid-template-columns:repeat(2,1fr)}}
 .seg button.on{background:var(--accent);border-color:var(--accent);color:#fff}
 .seg button:not(.on):hover{background:rgba(255,255,255,.16)}
 .seg-body{margin-top:16px;font-size:14.5px;color:var(--on-ink-mute);line-height:1.5;min-height:44px;transition:opacity .3s}
@@ -165,8 +168,13 @@ section>.wrap{position:relative;z-index:1}
 .svc-cards .svc{padding:28px}
 .svc-cards .svc h3{font-size:19px}
 .svc-cards .svc .thumb{margin:-28px -28px 20px}
-@media(max-width:1100px){.svc-cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1000px){.svc-cards{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.svc-cards{grid-template-columns:1fr}}
+/* service page: restate the service name above the prose */
+.svc-restate{font-family:var(--display);font-size:clamp(26px,3.4vw,36px);color:var(--head);
+  letter-spacing:-.02em;margin-bottom:8px}
+.svc-restate + .svc-kicker{font-size:14px;color:var(--faint);letter-spacing:.06em;
+  text-transform:uppercase;font-weight:600;margin-bottom:22px;display:block}
 .svc{background:rgba(255,255,255,.5);backdrop-filter:blur(16px) saturate(1.35);
   border:1px solid rgba(255,255,255,.75);border-radius:16px;padding:34px;
   box-shadow:0 14px 40px -30px rgba(22,23,27,.2);

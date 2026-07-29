@@ -79,7 +79,7 @@ const svc = {
   web: '<b>SERVICE 01 — Website Design.</b> A site that turns visitors into customers, live in two weeks. <a href="website-design.html">See the service' + ARW + '</a>',
   seo: '<b>SERVICE 02 — Local SEO.</b> Show up when customers search for what you do. <a href="local-seo.html">See the service' + ARW + '</a>',
   social: '<b>SERVICE 03 — Social Media.</b> A professional presence, handled for you. <a href="social-media.html">See the service' + ARW + '</a>',
-  email: '<b>SERVICE 04 — Email &amp; Lead Generation.</b> Outreach that finds the work, follow-up that never lets a lead go cold. <a href="email-lead-generation.html">See the service' + ARW + '</a>'
+  email: '<b>SERVICE 04 — Lead Generation.</b> Outreach that finds the work, follow-up that never lets a lead go cold. <a href="lead-generation.html">See the service' + ARW + '</a>'
 };
 const segBody = document.getElementById('segBody');
 if (segBody) document.querySelectorAll('.seg button').forEach(b => b.onclick = () => {
@@ -98,7 +98,8 @@ document.querySelectorAll('.qa').forEach(qa => {
   };
 });
 
-/* scroll reveal + one-time triggers */
+/* scroll reveal: ONLY the first section below the fold animates.
+   Everything further down is static, so the page does not keep re-animating. */
 const io = new IntersectionObserver(es => es.forEach(e => {
   if (!e.isIntersecting) return;
   e.target.classList.add('in');
@@ -106,8 +107,19 @@ const io = new IntersectionObserver(es => es.forEach(e => {
   if (e.target.dataset.stats !== undefined) runCounts(e.target);
   io.unobserve(e.target);
 }), { threshold: .16 });
-document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+const rvAll = [...document.querySelectorAll('.rv')];
+const blockOf = el => el.closest('section, .band, header, footer');
+const firstBlock = rvAll.length ? blockOf(rvAll[0]) : null;
+rvAll.forEach(el => {
+  if (firstBlock && blockOf(el) === firstBlock) io.observe(el);   // animates once
+  else el.classList.add('in');                                     // static
+});
+/* number animations still run once when reached */
 document.querySelectorAll('[data-stats]').forEach(el => io.observe(el));
+const barsEl = document.getElementById('bars');
+if (barsEl && !barsEl.classList.contains('rv')) io.observe(barsEl);
+else if (barsEl && blockOf(barsEl) !== firstBlock) io.observe(barsEl);
 
 function runBars() {
   document.querySelectorAll('.fill').forEach(f => f.style.width = f.dataset.w + '%');
