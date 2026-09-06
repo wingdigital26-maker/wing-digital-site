@@ -17,12 +17,14 @@ if (burger) burger.addEventListener('click', () => {
 /* contact form: show thanks after formsubmit redirect */
 if (location.search.includes('sent=1')) {
   const l = document.getElementById('subL');
-  if (l) l.textContent = "Thanks — we'll be in touch!";
+  if (l) l.textContent = "Thanks - we'll be in touch!";
 }
 
-/* intro overlay (home only) — chip dissolves into the wordmark */
+/* intro overlay (home only) - the sigil charges and the panes crack apart */
 const intro = document.getElementById('intro');
-if (intro) {
+const introReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (intro && introReduced) intro.remove(); // CSS hides it; drop it entirely and never touch the wordmark
+if (intro && !introReduced) {
   const wm = document.querySelector('.wordmark');
   if (wm) wm.classList.add('wm-hide');
   requestAnimationFrame(() => intro.classList.add('show'));
@@ -79,10 +81,10 @@ if (intro) {
 /* service selector (home) */
 const ARW = ' <svg viewBox="0 0 24 24" fill="none" style="width:15px;height:15px;vertical-align:-2px"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const svc = {
-  web: '<b>SERVICE 01 — Website Design.</b> A site that turns visitors into customers, live in two weeks. <a href="website-design.html">See the service' + ARW + '</a>',
-  seo: '<b>SERVICE 02 — Local SEO.</b> Show up when customers search for what you do. <a href="local-seo.html">See the service' + ARW + '</a>',
-  social: '<b>SERVICE 03 — Social Media.</b> A professional presence, handled for you. <a href="social-media.html">See the service' + ARW + '</a>',
-  email: '<b>SERVICE 04 — Lead Generation.</b> Outreach that finds the work, follow-up that never lets a lead go cold. <a href="lead-generation.html">See the service' + ARW + '</a>'
+  web: '<b>SERVICE 01 - Website Design.</b> A site that turns visitors into customers, live in two weeks. <a href="website-design.html">See the service' + ARW + '</a>',
+  seo: '<b>SERVICE 02 - Local SEO.</b> Show up when customers search for what you do. <a href="local-seo.html">See the service' + ARW + '</a>',
+  social: '<b>SERVICE 03 - Social Media.</b> A professional presence, handled for you. <a href="social-media.html">See the service' + ARW + '</a>',
+  email: '<b>SERVICE 04 - Lead Generation.</b> Outreach that finds the work, follow-up that never lets a lead go cold. <a href="lead-generation.html">See the service' + ARW + '</a>'
 };
 const segBody = document.getElementById('segBody');
 if (segBody) document.querySelectorAll('.seg button').forEach(b => b.onclick = () => {
@@ -144,7 +146,7 @@ function runCounts(scope) {
 function submitForm(e) {
   e.preventDefault();
   const l = document.getElementById('subL');
-  if (l) l.textContent = "Thanks — we'll be in touch!";
+  if (l) l.textContent = "Thanks - we'll be in touch!";
   e.target.reset(); return false;
 }
 window.submitForm = submitForm;
