@@ -27,9 +27,12 @@ if (intro) {
   if (wm) wm.classList.add('wm-hide');
   requestAnimationFrame(() => intro.classList.add('show'));
   setTimeout(() => {
-    intro.classList.add('open');          // panes glide apart, chip fades in place
-    if (wm) wm.classList.remove('wm-hide'); // wordmark eases in behind them
-  }, 1150);
+    intro.classList.add('open');          // sigil charges, flashes, panes crack apart
+  }, 1500);
+  setTimeout(() => {
+    const w = document.querySelector('.wordmark');
+    if (w) w.classList.remove('wm-hide'); // wordmark eases in on the flash
+  }, 2050);
   setTimeout(() => intro.remove(), 3400);
 }
 

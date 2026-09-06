@@ -14,7 +14,13 @@
 <div class="intro" id="intro" aria-hidden="true">
   <div class="pane tl"></div>
   <div class="pane br"></div>
-  <div class="chip"><img src="assets/wing-mark-hi.png" alt=""></div>
+  <div class="sigil">
+    <span class="sglow"></span>
+    <span class="sring"></span>
+    <img src="assets/wing-mark-hi.png" alt="">
+    <span class="smote"></span><span class="smote"></span><span class="smote"></span>
+  </div>
+  <div class="flash"></div>
 </div>
 
 <nav id="nav">
@@ -34,6 +40,11 @@
 
 <header class="hero" id="top">
   <div class="us-scene" data-us-project="lHlDvoJDIXCxxXVqTNOC" aria-hidden="true"></div>
+  <div class="aurora" aria-hidden="true"><i></i><i></i></div>
+  <span class="hmote" style="left:18%;animation-delay:0s;width:3px;height:3px"></span>
+  <span class="hmote" style="left:46%;animation-delay:3.5s;width:2px;height:2px"></span>
+  <span class="hmote" style="left:72%;animation-delay:7s;width:3px;height:3px"></span>
+  <span class="hmote" style="left:88%;animation-delay:5s;width:2px;height:2px"></span>
   <div class="wrap hero-grid">
     <h1 class="wordmark">Wing<br>Digital</h1>
     <div class="hero-right">
@@ -226,6 +237,31 @@
   </div>
 </footer>
 
+<div id="wing-helper" title="Meet Halo" aria-hidden="true"></div>
+<style>
+  #wing-helper{position:fixed;right:18px;bottom:16px;z-index:60;opacity:0;pointer-events:none;transition:opacity .8s}
+  #wing-helper.on{opacity:1;pointer-events:auto;cursor:pointer}
+</style>
+<script src="assets/wing-mascot.js"></script>
+<script>
+(function(){
+  if (!window.WingMascot) return;
+  var chatItems = {
+    greeting: 'Hey, I am Zephyr, the intelligence behind Wing Digital. Ask me anything.',
+    items: [
+      { q: 'What does Wing Digital do?', a: 'We build your website, run your local SEO and social, and answer your leads for you. You work, we make sure DFW finds you. <a href="services.html">See the services</a>.' },
+      { q: 'How fast can my site go live?', a: 'Two weeks from kickoff to live. Design, copy, photos, hosting, and on-page SEO all handled for you.' },
+      { q: 'Can I see real work?', a: 'Yes. Jackson Roofing and Renewal Health are live builds you can click through right now. <a href="work.html">See the work</a>.' },
+      { q: 'How do I get started?', a: 'Scroll to the contact form and tell us about your business, or just call. We reply fast, that is kind of our whole thing. <a href="contact.html">Contact us</a>.' }
+    ]
+  };
+  var helperSlot = document.getElementById('wing-helper');
+  var helper = WingMascot.mount(helperSlot, { size: 64 });
+  WingMascot.chat(helper, chatItems);
+  // Zephyr lives in the corner; he arrives just after the intro settles.
+  setTimeout(function () { helperSlot.classList.add('on'); helper.flare(); }, 2600);
+})();
+</script>
 <script src="script.js"></script>
 <script src="https://cdn.unicorn.studio/v1.2.3/unicornStudio.umd.js" onload="UnicornStudio.init()"></script>
 </body>
