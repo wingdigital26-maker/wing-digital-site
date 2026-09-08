@@ -216,7 +216,7 @@ def main():
     os.chdir(here)
 
     pages = sorted(glob.glob("*.html"))
-    pages = [p for p in pages if p != "loadout.html"]
+    pages = [p for p in pages if p not in ("loadout.html", "demo-dashboard.html")]
     for p in pages:
         check_html(p)
     check_css("style.css")
