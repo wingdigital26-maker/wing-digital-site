@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Wing Digital — brand loadout board</title>
+<link rel="icon" type="image/png" href="assets/wing-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@500;600&family=Instrument+Serif&family=Newsreader:opsz,wght@6..72,300..600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FAF9F6; --sand:#EFEBE4; --ink:#141110; --stone:#6B6560;
+  --hair:rgba(20,17,16,.13); --accent:#2757E6;
+  --sans:"Instrument Sans",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:17px;line-height:1.55;letter-spacing:-.005em;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+a{color:inherit}
+
+/* ---- page head ---- */
+.head{border-bottom:1px solid var(--hair);padding:64px 0 40px;margin-bottom:64px}
+.head .lbl{font-family:var(--mono);font-size:12px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--stone)}
+.head h1{font-family:"Fraunces",Georgia,serif;font-size:clamp(38px,6vw,72px);
+  font-weight:400;line-height:1.0;letter-spacing:-.03em;margin:18px 0 20px;max-width:15ch}
+.head p{max-width:58ch;color:var(--stone)}
+.head .how{margin-top:26px;padding:16px 20px;border-left:2px solid var(--accent);
+  background:var(--sand);max-width:62ch;font-size:15px}
+
+/* ---- board ---- */
+.board{margin:0 0 104px}
+.rule{display:flex;justify-content:space-between;align-items:baseline;
+  border-top:1px solid var(--ink);padding-top:14px;margin-bottom:36px}
+.rule .l,.rule .r{font-family:var(--mono);font-size:12px;letter-spacing:.12em;
+  text-transform:uppercase}
+.rule .r{color:var(--stone)}
+.board > p.note{max-width:60ch;color:var(--stone);margin:-18px 0 36px;font-size:15px}
+
+.opts{display:grid;gap:24px}
+.opts.two{grid-template-columns:repeat(2,1fr)}
+.opts.three{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.opts.two,.opts.three{grid-template-columns:1fr}}
+
+.opt{border:1px solid var(--hair);border-radius:4px;background:#fff;
+  padding:28px;position:relative;transition:border-color .3s,transform .3s}
+.opt:hover{border-color:var(--ink);transform:translateY(-2px)}
+.opt .tag{font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--stone);display:block;margin-bottom:18px}
+.opt .name{font-size:15px;font-weight:600;margin-top:22px}
+.opt .why{font-size:14px;color:var(--stone);margin-top:6px;line-height:1.45}
+.opt.pick{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.opt.pick .tag{color:var(--accent)}
+
+/* ---- A: display faces ---- */
+.face{line-height:.95;letter-spacing:-.03em;font-weight:400}
+.f-fraunces{font-family:"Fraunces",Georgia,serif;font-size:56px;
+  font-variation-settings:"SOFT" 0,"WONK" 1,"opsz" 100}
+.f-instrument{font-family:"Instrument Serif",Georgia,serif;font-size:60px}
+.f-playfair{font-family:"Playfair Display",Georgia,serif;font-size:54px;font-weight:500}
+.f-newsreader{font-family:"Newsreader",Georgia,serif;font-size:56px}
+.face-sub{font-size:14px;color:var(--stone);margin-top:14px;font-family:var(--sans);
+  letter-spacing:normal;line-height:1.5}
+
+/* ---- B: palettes ---- */
+.sw{display:flex;height:88px;border-radius:4px;overflow:hidden;border:1px solid var(--hair)}
+.sw i{flex:1;display:block}
+.sw i.wide{flex:3}
+.hexes{font-family:var(--mono);font-size:11.5px;color:var(--stone);
+  margin-top:12px;display:flex;gap:14px;flex-wrap:wrap}
+
+/* ---- C: buttons ---- */
+.btnrow{display:flex;gap:12px;flex-wrap:wrap;align-items:center;min-height:60px}
+.b{font-family:var(--sans);font-size:15px;font-weight:500;cursor:pointer;
+  border:0;display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+  transition:all .45s cubic-bezier(.19,1,.22,1)}
+/* c1 sharp editorial */
+.b.c1{background:var(--ink);color:var(--paper);height:52px;padding:0 26px;border-radius:2px}
+.b.c1:hover{background:var(--accent)}
+.b.c1-o{background:none;color:var(--ink);height:52px;padding:0 26px;
+  border-radius:2px;box-shadow:inset 0 0 0 1px var(--hair)}
+.b.c1-o:hover{box-shadow:inset 0 0 0 1px var(--ink)}
+/* c2 pill (current) */
+.b.c2{background:var(--ink);color:var(--paper);height:54px;padding:0 30px;border-radius:100px}
+.b.c2:hover{background:var(--accent);transform:translateY(-3px)}
+.b.c2-o{background:none;color:var(--ink);height:54px;padding:0 30px;border-radius:100px;
+  box-shadow:inset 0 0 0 1px var(--hair)}
+.b.c2-o:hover{box-shadow:inset 0 0 0 1px var(--ink);transform:translateY(-3px)}
+/* c3 underline link-first */
+.b.c3{background:none;color:var(--ink);height:auto;padding:6px 0;border-radius:0;
+  font-size:19px;position:relative}
+.b.c3::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:var(--ink);transform-origin:left;transition:transform .45s cubic-bezier(.19,1,.22,1)}
+.b.c3:hover::after{transform:scaleX(0);transform-origin:right}
+.b.c3 .ar{transition:transform .45s cubic-bezier(.19,1,.22,1)}
+.b.c3:hover .ar{transform:translateX(6px)}
+.b svg{width:16px;height:16px}
+
+/* ---- D: section header treatments ---- */
+.demo{border:1px solid var(--hair);border-radius:4px;padding:34px;background:#fff}
+.d-rule{border-top:1px solid var(--ink);padding-top:12px;display:flex;
+  justify-content:space-between;font-family:var(--mono);font-size:11px;
+  letter-spacing:.12em;text-transform:uppercase}
+.d-rule .m{color:var(--stone)}
+.d-h{font-family:"Fraunces",Georgia,serif;font-size:36px;font-weight:400;
+  line-height:1.0;letter-spacing:-.03em;margin-top:22px;max-width:16ch}
+.d-eye{font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent)}
+.d-big{font-family:"Fraunces",Georgia,serif;font-size:72px;font-weight:400;
+  line-height:.9;letter-spacing:-.04em;color:var(--sand);
+  -webkit-text-stroke:1px var(--hair)}
+
+/* ---- E: ledger row vs cards ---- */
+.ledger{border-top:1px solid var(--hair)}
+.lrow{display:grid;grid-template-columns:64px 1fr 40px;gap:20px;align-items:baseline;
+  padding:22px 0;border-bottom:1px solid var(--hair);cursor:pointer;
+  transition:padding-left .45s cubic-bezier(.19,1,.22,1)}
+.lrow:hover{padding-left:14px}
+.lrow .n{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--stone)}
+.lrow h4{font-family:"Fraunces",Georgia,serif;font-weight:400;font-size:26px;
+  letter-spacing:-.025em;line-height:1.1}
+.lrow p{font-size:14.5px;color:var(--stone);margin-top:6px;max-width:46ch;line-height:1.5}
+.lrow .ar{justify-self:end;color:var(--stone);transition:transform .45s cubic-bezier(.19,1,.22,1)}
+.lrow:hover .ar{transform:translateX(6px);color:var(--accent)}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cards3 .c{border:1px solid var(--hair);border-radius:12px;padding:22px;background:var(--sand)}
+.cards3 .c h4{font-size:17px;margin-bottom:8px}
+.cards3 .c p{font-size:14px;color:var(--stone);line-height:1.5}
+@media(max-width:700px){.cards3{grid-template-columns:1fr}}
+
+/* ---- F: intro motion ---- */
+.intro-demo{height:200px;border-radius:4px;overflow:hidden;position:relative;
+  background:var(--ink);cursor:pointer}
+.intro-demo .cap{position:absolute;left:0;right:0;bottom:12px;text-align:center;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);z-index:5}
+.intro-demo .pane{position:absolute;inset:0;background:var(--ink)}
+/* i1 diagonal split (current) */
+.i1 .pane.tl{clip-path:polygon(0 0,100% 0,0 100%)}
+.i1 .pane.br{clip-path:polygon(100% 0,100% 100%,0 100%)}
+.i1:hover .pane.tl{animation:pTL 1.1s cubic-bezier(.7,0,.18,1) forwards}
+.i1:hover .pane.br{animation:pBR 1.1s cubic-bezier(.7,0,.18,1) forwards}
+@keyframes pTL{to{transform:translate(-106%,-106%)}}
+@keyframes pBR{to{transform:translate(106%,106%)}}
+/* i2 curtain lift */
+.i2 .pane{transition:transform 1s cubic-bezier(.7,0,.18,1)}
+.i2:hover .pane{transform:translateY(-101%)}
+/* i3 wordmark wipe */
+.i3 .pane{display:flex;align-items:center;justify-content:center;
+  transition:clip-path 1.1s cubic-bezier(.7,0,.18,1)}
+.i3:hover .pane{clip-path:inset(0 0 0 100%)}
+.i3 .pane span{font-family:"Fraunces",Georgia,serif;font-size:34px;color:#fff;
+  letter-spacing:-.03em}
+.intro-demo .under{position:absolute;inset:0;display:flex;align-items:center;
+  justify-content:center;background:var(--paper)}
+.intro-demo .under span{font-family:"Fraunces",Georgia,serif;font-size:30px;
+  letter-spacing:-.03em;color:var(--ink)}
+.mark{width:34px;height:34px}
+
+/* ---- decide ---- */
+.decide{border-top:1px solid var(--ink);padding:34px 0 90px;margin-top:20px}
+.decide h2{font-family:"Fraunces",Georgia,serif;font-size:32px;font-weight:400;
+  letter-spacing:-.03em;margin-bottom:14px}
+.decide ol{margin:0 0 0 20px;max-width:62ch}
+.decide li{margin-bottom:10px;color:var(--stone)}
+.decide b{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<div class="head">
+  <span class="lbl">Wing Digital / brand loadout</span>
+  <h1>Pick the personality before I build it.</h1>
+  <p>Hard rule 7: every build gets a loadout board before the look is locked.
+  Below is every choice that changes how the site feels, shown live rather than
+  described. Everything here is real CSS, not a mockup.</p>
+  <div class="how"><b>How to use this:</b> hover anything that looks interactive.
+  Then reply with one letter per board, like <span style="font-family:var(--mono)">A2 B1 C1 D1 E1 F3</span>.
+  Say "your call" for any board you don't care about and I'll take the marked pick.</div>
+</div>
+
+<!-- ================= A ================= -->
+<section class="board">
+  <div class="rule"><span class="l">A / Display typeface</span><span class="r">Four candidates</span></div>
+  <p class="note">This is the single biggest lever on whether the site reads
+  expensive or generic. Your current face is Playfair, which is the serif every
+  AI-built site reaches for. All four are free for commercial use (SIL OFL).</p>
+  <div class="opts two">
+    <div class="opt pick">
+      <span class="tag">A1 · my pick · Fraunces</span>
+      <div class="face f-fraunces">Found on<br>Google.</div>
+      <div class="face-sub">Has real optical-size and "wonk" axes, so it has grit at
+      large sizes instead of looking like a wedding invitation. Distinctive enough
+      that nobody will think a template made it.</div>
+      <div class="name">Fraunces</div>
+      <div class="why">Warm, slightly odd, confident. Best fit for editorial authority.</div>
+    </div>
+    <div class="opt">
+      <span class="tag">A2 · Instrument Serif</span>
+      <div class="face f-instrument">Found on<br>Google.</div>
+      <div class="face-sub">High contrast, very tall, very current. The face on a lot
+      of the best new studio sites right now, which is both the upside and the risk.</div>
+      <div class="name">Instrument Serif</div>
+      <div class="why">Sharpest and most fashionable. Slightly colder.</div>
+    </div>
+    <div class="opt">
+      <span class="tag">A3 · Newsreader</span>
+      <div class="face f-newsreader">Found on<br>Google.</div>
+      <div class="face-sub">A true reading serif. Feels like a newspaper feature,
+      which suits proof-heavy pages and long case studies.</div>
+      <div class="name">Newsreader</div>
+      <div class="why">Most trustworthy, least flashy. Safe and grown up.</div>
+    </div>
+    <div class="opt">
+      <span class="tag">A4 · Playfair (what you have)</span>
+      <div class="face f-playfair">Found on<br>Google.</div>
+      <div class="face-sub">Nothing wrong with it technically. The problem is
+      recognition: it is the default, so it reads as the default.</div>
+      <div class="name">Playfair Display</div>
+      <div class="why">Keep only if you want zero visual change up top.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= B ================= -->
+<section class="board">
+  <div class="rule"><span class="l">B / Paper and ink</span><span class="r">Your blue stays either way</span></div>
+  <p class="note">The blue is fixed. What is in play is the temperature of the
+  black and the white behind it. Warm ink is what makes expensive sites feel
+  expensive; pure black on pure white is the tell of a fast build.</p>
+  <div class="opts three">
+    <div class="opt pick">
+      <span class="tag">B1 · my pick · warm</span>
+      <div class="sw"><i class="wide" style="background:#FAF9F6"></i><i style="background:#EFEBE4"></i><i class="wide" style="background:#141110"></i><i style="background:#6B6560"></i><i style="background:#2757E6"></i></div>
+      <div class="hexes"><span>#FAF9F6</span><span>#EFEBE4</span><span>#141110</span><span>#6B6560</span><span>#2757E6</span></div>
+      <div class="name">Warm paper, warm ink</div>
+      <div class="why">Brown in the black, cream in the white. Reads printed. The
+      blue lands harder because everything around it is warm.</div>
+    </div>
+    <div class="opt">
+      <span class="tag">B2 · neutral</span>
+      <div class="sw"><i class="wide" style="background:#FBFBF9"></i><i style="background:#F2F1EE"></i><i class="wide" style="background:#16171B"></i><i style="background:#606266"></i><i style="background:#2757E6"></i></div>
+      <div class="hexes"><span>#FBFBF9</span><span>#F2F1EE</span><span>#16171B</span><span>#606266</span><span>#2757E6</span></div>
+      <div class="name">Neutral (what you have)</div>
+      <div class="why">Clean and safe. Slightly cool, slightly anonymous.</div>
+    </div>
+    <div class="opt">
+      <span class="tag">B3 · ink-forward</span>
+      <div class="sw"><i class="wide" style="background:#121212"></i><i style="background:#1C1C1B"></i><i class="wide" style="background:#F4F2ED"></i><i style="background:#8A857F"></i><i style="background:#2757E6"></i></div>
+      <div class="hexes"><span>#121212</span><span>#1C1C1B</span><span>#F4F2ED</span><span>#8A857F</span><span>#2757E6</span></div>
+      <div class="name">Dark site, light type</div>
+      <div class="why">Dark all the way down, not just the hero. Striking, but
+      harder to read long and riskier for a local-services buyer.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= C ================= -->
+<section class="board">
+  <div class="rule"><span class="l">C / Buttons and CTAs</span><span class="r">Hover them</span></div>
+  <p class="note">Every CTA routes to the contact page, no phone numbers
+  anywhere (hard rule 8). This is only about the shape.</p>
+  <div class="opts three">
+    <div class="opt pick">
+      <span class="tag">C1 · my pick · sharp</span>
+      <div class="btnrow">
+        <a href="#" class="b c1">Contact us</a>
+        <a href="#" class="b c1-o">See the work</a>
+      </div>
+      <div class="name">2px radius, flat, fills blue on hover</div>
+      <div class="why">Editorial sites almost never use pills. Sharp corners read
+      as considered; pills read as a UI kit.</div>
+    </div>
+    <div class="opt">
+      <span class="tag">C2 · pill (what you have)</span>
+      <div class="btnrow">
+        <a href="#" class="b c2">Contact us</a>
+        <a href="#" class="b c2-o">See the work</a>
+      </div>
+      <div class="name">Full round, lifts on hover</div>
+      <div class="why">Friendly and familiar. Also the most common shape on the
+      internet, which is the problem.</div>
+    </div>
+    <div class="opt">
+      <span class="tag">C3 · underline</span>
+      <div class="btnrow">
+        <a href="#" class="b c3">Contact us <span class="ar">&#8594;</span></a>
+      </div>
+      <div class="name">No button at all, just typography</div>
+      <div class="why">The most high-end and the lowest converting. Good for
+      secondary links, risky as the main CTA on a lead-gen site.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= D ================= -->
+<section class="board">
+  <div class="rule"><span class="l">D / Section headers</span><span class="r">How every band opens</span></div>
+  <p class="note">This repeats twenty-odd times across the site, so it sets the
+  rhythm more than any single hero does.</p>
+  <div class="opts three">
+    <div class="opt pick">
+      <span class="tag">D1 · my pick · hairline ledger</span>
+      <div class="demo">
+        <div class="d-rule"><span>Services</span><span class="m">01 / 04</span></div>
+        <div class="d-h">We get DFW businesses found on Google.</div>
+      </div>
+      <div class="name">1px rule, mono label left, index right</div>
+      <div class="why">Quiet, architectural, scales to every page without
+      decoration. This is the Pentagram move.</div>
+    </div>
+    <div class="opt">
+      <span class="tag">D2 · accent eyebrow</span>
+      <div class="demo">
+        <span class="d-eye">Services</span>
+        <div class="d-h">We get DFW businesses found on Google.</div>
+      </div>
+      <div class="name">Blue label, no rule</div>
+      <div class="why">Warmer and more conventional. Spends the accent colour on
+      a label instead of saving it for the CTA.</div>
+    </div>
+    <div class="opt">
+      <span class="tag">D3 · ghost numeral</span>
+      <div class="demo">
+        <div class="d-big">01</div>
+        <div class="d-h" style="margin-top:8px">We get DFW businesses found on Google.</div>
+      </div>
+      <div class="name">Oversized outlined number</div>
+      <div class="why">More graphic, more attitude. Starts to fight the headline
+      for attention on a long page.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= E ================= -->
+<section class="board">
+  <div class="rule"><span class="l">E / How services are laid out</span><span class="r">Hover the rows</span></div>
+  <p class="note">You sell four services. Three-card grids are the number one
+  giveaway of an AI-built page, and you have four things anyway.</p>
+  <div class="opts two">
+    <div class="opt pick">
+      <span class="tag">E1 · my pick · ledger rows</span>
+      <div class="ledger">
+        <div class="lrow"><span class="n">01</span><div><h4>Website Design</h4><p>A site that turns visitors into phone calls, live in two weeks.</p></div><span class="ar">&#8594;</span></div>
+        <div class="lrow"><span class="n">02</span><div><h4>Local SEO</h4><p>Getting you found when DFW customers actually search.</p></div><span class="ar">&#8594;</span></div>
+        <div class="lrow"><span class="n">03</span><div><h4>Social Media</h4><p>Written and posted for you. One check-in a month.</p></div><span class="ar">&#8594;</span></div>
+        <div class="lrow"><span class="n">04</span><div><h4>Lead Generation</h4><p>Outreach that fills the gaps between referrals.</p></div><span class="ar">&#8594;</span></div>
+      </div>
+      <div class="name">Full-width numbered rows</div>
+      <div class="why">Reads like a table of contents. Gives each service room to
+      breathe and makes the list feel like a real practice, not four tiles.</div>
+    </div>
+    <div class="opt">
+      <span class="tag">E2 · card grid (what you have)</span>
+      <div class="cards3">
+        <div class="c"><h4>Website Design</h4><p>A site that turns visitors into phone calls.</p></div>
+        <div class="c"><h4>Local SEO</h4><p>Found when DFW customers search.</p></div>
+        <div class="c"><h4>Social Media</h4><p>Written and posted for you.</p></div>
+      </div>
+      <div class="name">Equal cards in a grid</div>
+      <div class="why">Familiar and scannable. Also exactly what every generated
+      page looks like.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= F ================= -->
+<section class="board">
+  <div class="rule"><span class="l">F / The opening</span><span class="r">Hover to play</span></div>
+  <p class="note">Hard rule 6: every homepage opens with a short branded intro.
+  This is about which one. All three are under 1.2s and all three respect
+  reduced-motion.</p>
+  <div class="opts three">
+    <div class="opt">
+      <span class="tag">F1 · diagonal split (what you have)</span>
+      <div class="intro-demo i1">
+        <div class="under"><span>Wing Digital</span></div>
+        <div class="pane tl"></div><div class="pane br"></div>
+        <span class="cap">hover to play</span>
+      </div>
+      <div class="name">Two panes slide to opposite corners</div>
+      <div class="why">Works, but the diagonal is not saying anything about Wing.</div>
+    </div>
+    <div class="opt">
+      <span class="tag">F2 · curtain lift</span>
+      <div class="intro-demo i2">
+        <div class="under"><span>Wing Digital</span></div>
+        <div class="pane"></div>
+        <span class="cap">hover to play</span>
+      </div>
+      <div class="name">Single pane lifts straight up</div>
+      <div class="why">Calmest and fastest. Gets out of the way, which on a
+      lead-gen site is an argument in itself.</div>
+    </div>
+    <div class="opt pick">
+      <span class="tag">F3 · my pick · wordmark wipe</span>
+      <div class="intro-demo i3">
+        <div class="under"><span>Websites that get called.</span></div>
+        <div class="pane"><span>Wing Digital</span></div>
+        <span class="cap">hover to play</span>
+      </div>
+      <div class="name">Name holds, then wipes left to right off the page</div>
+      <div class="why">The intro does a job instead of just being motion: it
+      says the name, then hands you the promise. Wipe direction matches the
+      reading direction of everything below it.</div>
+    </div>
+  </div>
+</section>
+
+<div class="decide">
+  <h2>What happens after you pick</h2>
+  <ol>
+    <li><b>You reply with your letters</b> (or "your call" and I take the marked picks).</li>
+    <li><b>I build the home page first</b> to the locked personality so you can judge the real thing, not a board.</li>
+    <li><b>Three judges review it</b> in parallel: brief fidelity, craft precision at 375px and 1440px, and an adversarial slop check. They loop until it passes or four rounds are up.</li>
+    <li><b>Then it rolls across all 17 pages</b> and the rules get written down in <span style="font-family:var(--mono);font-size:14px">design-dna.md</span> so future pages inherit the look instead of re-rolling the dice.</li>
+  </ol>
+</div>
+
+</div>
+</body>
+</html>
