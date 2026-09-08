@@ -586,7 +586,16 @@ body{padding-bottom:0}
 .bg{z-index:1}
 /* the photo hero needs the canvas to read over the scrim, the others do not */
 .hero .bg{mix-blend-mode:screen;opacity:1}
-.page-head .bg,.contact .bg{opacity:.9}
+.page-head .bg{opacity:.9}
+/* on the contact band the right half is a form. Fade the canvas out
+   before it reaches the fields so nothing moves behind an input. */
+.contact .bg{opacity:.55;
+  -webkit-mask-image:linear-gradient(90deg,#000 0%,#000 38%,rgba(0,0,0,0) 62%);
+  mask-image:linear-gradient(90deg,#000 0%,#000 38%,rgba(0,0,0,0) 62%)}
+@media(max-width:900px){
+  .contact .bg{-webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,0) 46%);
+    mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,0) 46%)}
+}
 
 /* a faint vignette keeps the canvas from touching the type */
 .page-head::before,.contact::before{content:"";position:absolute;inset:0;z-index:1;

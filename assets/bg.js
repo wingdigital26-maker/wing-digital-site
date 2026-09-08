@@ -168,6 +168,37 @@
       };
     },
 
+    /* contact and 404: the form is the content, so this one is barely there.
+       No rings, no geometry crossing the fields, nothing that moves fast
+       enough to catch the eye while somebody is typing. Just a slow warm
+       drift anchored well left of the form. */
+    quiet: function () {
+      var pts = [];
+      return {
+        init: function (w, h) {
+          var n = Math.min(26, Math.round(w * h / 62000));
+          pts = [];
+          for (var i = 0; i < n; i++) {
+            pts.push({ x: rnd(0, w * 0.62), y: rnd(0, h),
+                       r: rnd(0.8, 1.7), p: Math.random() * 6.28,
+                       s: 0.06 + Math.random() * 0.05 });
+          }
+        },
+        draw: function (c, w, h, t) {
+          for (var i = 0; i < pts.length; i++) {
+            var a = pts[i];
+            var dy = Math.sin(t * a.s + a.p) * 9;
+            var dx = Math.cos(t * a.s * 0.6 + a.p) * 6;
+            var o = 0.10 + (Math.sin(t * a.s * 1.3 + a.p) + 1) * 0.09;
+            c.fillStyle = 'rgba(' + ACCENT + ',' + o.toFixed(3) + ')';
+            c.beginPath();
+            c.arc(a.x + dx, a.y + dy, a.r, 0, 6.284);
+            c.fill();
+          }
+        }
+      };
+    },
+
     /* contact + 404: rings pulsing out from one point. A signal being sent. */
     pulse: function () {
       return {
