@@ -1,3 +1,2 @@
 User-agent: *
 Allow: /
-Sitemap: https://wingdigital26-maker.github.io/wing-digital-site/sitemap.xml
